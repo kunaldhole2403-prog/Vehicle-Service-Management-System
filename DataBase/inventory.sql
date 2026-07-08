@@ -1,0 +1,69 @@
+-- Login Table
+CREATE TABLE Login(
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    role VARCHAR(20) NOT NULL
+);
+
+-- Customer Table
+CREATE TABLE Customer(
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(50) NOT NULL,
+    phone VARCHAR(15),
+    email VARCHAR(50),
+    address VARCHAR(100)
+);
+
+-- Vehicle Table
+CREATE TABLE Vehicle(
+    vehicle_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT,
+    vehicle_no VARCHAR(20) UNIQUE,
+    company VARCHAR(30),
+    model VARCHAR(30),
+    year INT,
+    FOREIGN KEY(customer_id)
+    REFERENCES Customer(customer_id)
+);
+
+-- Service Table
+CREATE TABLE Service(
+    service_id INT AUTO_INCREMENT PRIMARY KEY,
+    vehicle_id INT,
+    service_type VARCHAR(50),
+    service_date DATE,
+    status VARCHAR(20),
+    FOREIGN KEY(vehicle_id)
+    REFERENCES Vehicle(vehicle_id)
+);
+
+-- Mechanic Table
+CREATE TABLE Mechanic(
+    mechanic_id INT AUTO_INCREMENT PRIMARY KEY,
+    mechanic_name VARCHAR(50),
+    phone VARCHAR(15),
+    specialization VARCHAR(50)
+);
+
+-- Service Assignment Table
+CREATE TABLE Service_Assignment(
+    assign_id INT AUTO_INCREMENT PRIMARY KEY,
+    service_id INT,
+    mechanic_id INT,
+    FOREIGN KEY(service_id)
+    REFERENCES Service(service_id),
+    FOREIGN KEY(mechanic_id)
+    REFERENCES Mechanic(mechanic_id)
+);
+
+-- Billing Table
+CREATE TABLE Billing(
+    bill_id INT AUTO_INCREMENT PRIMARY KEY,
+    service_id INT,
+    amount DECIMAL(10,2),
+    payment_status VARCHAR(20),
+    bill_date DATE,
+    FOREIGN KEY(service_id)
+    REFERENCES Service(service_id)
+);
