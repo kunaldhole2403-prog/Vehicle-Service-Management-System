@@ -16,15 +16,14 @@ print(" database connected !")
 cursor=conn.cursor()
 cursor.execute("""
   create table if not exists customer(
-               customer_id INT AUTO_INCREMENT PRIMARY KEY,
-               customer_name VARCHAR(50) NOT NULL,
-                phone VARCHAR(15),
-                email VARCHAR(50),
-                address VARCHAR(100)
+               customer_id int auto_increment primary key,
+               customer_name varchar(50) not null,
+                phone varchar(15),
+                email varchar(50),
+                address varchar(100)
 
                )
   
 """ )
 
 conn.commit()
-
