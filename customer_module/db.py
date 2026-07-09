@@ -27,4 +27,4 @@ cursor.execute("""
 """ )
 
 conn.commit()
-print(" table created !")
+
