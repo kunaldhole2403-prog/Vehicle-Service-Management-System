@@ -2,15 +2,15 @@ from db import conn,cursor
 
 # add customer
 def add_customer():
-    customer_id=int(input(" enter customer ID:"))
-    customer_name=input(" enter your name:")
-    phone=input(" enter your phone number:")
-    email=input(" enter your email:")
-    address=input(" enter your address:")
+   
+    customer_name=input(" Enter your Name : ")
+    phone=input(" Enter your Phone Number : ")
+    email=input(" Enter your Email : ")
+    address=input(" Enter your Address : ")
    
 
-    query=" insert into customer(customer_id,customer_name,phone,email,address) values(%s,%s,%s,%s,%s)"
-    values=(customer_id,customer_name,phone,email,address)
+    query=" insert into customer(customer_name,phone,email,address) values(%s,%s,%s,%s)"
+    values=(customer_name,phone,email,address)
     cursor.execute(query,values)
     conn.commit()
     print(" data added !")
@@ -19,24 +19,24 @@ def add_customer():
 # search customer
 
 def search_customer():
-    customer_id=int(input(" enter customer ID:"))
+    customer_id=int(input(" Enter customer ID : "))
     query=" select * from customer where customer_id=%s"
     cursor.execute(query,(customer_id,))
     row=cursor.fetchone()
     if row:
         print(row)
     else:
-        print(" customer not found")    
+        print(" customer not found !")    
 
 
 # update customer
 
 def update_customer():
-    customer_id=int(input(" enter customer ID:"))
-    customer_name=input(" enter new name:")
-    phone=input(" enter new phone number :")
-    email=input(" enter your email:")
-    address=input(" enter your address:")
+    customer_id=int(input(" Enter customer ID : "))
+    customer_name=input(" Enter New Name : ")
+    phone=input(" Enter New Phone Number : ")
+    email=input(" Enter your Email : ")
+    address=input(" Enter your Address : ")
    
     query="update customer set customer_name=%s,phone=%s,email=%s,address=%s where customer_id=%s"
     values=(customer_name,phone,email,address, customer_id)
@@ -52,7 +52,7 @@ def update_customer():
 # delete customer
 
 def delete_customer():
-    customer_id=int(input(" enter your customer ID:"))
+    customer_id=int(input(" Enter your Customer ID : "))
     query=" delete from customer where customer_id=%s"
     cursor.execute(query,(customer_id,))
     conn.commit()
