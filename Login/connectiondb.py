@@ -6,7 +6,7 @@ def get_connection():
             host="localhost",
             user="root",
             password="Kunal@123",
-            database="Vehicle_Service_Management"
+            database="vechicle_service_management"
         )
         return conn
 
