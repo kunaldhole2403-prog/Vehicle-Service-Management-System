@@ -38,25 +38,6 @@ CREATE TABLE Service(
     REFERENCES Vehicle(vehicle_id)
 );
 
--- Mechanic Table
-CREATE TABLE Mechanic(
-    mechanic_id INT AUTO_INCREMENT PRIMARY KEY,
-    mechanic_name VARCHAR(50),
-    phone VARCHAR(15),
-    specialization VARCHAR(50)
-);
-
--- Service Assignment Table
-CREATE TABLE Service_Assignment(
-    assign_id INT AUTO_INCREMENT PRIMARY KEY,
-    service_id INT,
-    mechanic_id INT,
-    FOREIGN KEY(service_id)
-    REFERENCES Service(service_id),
-    FOREIGN KEY(mechanic_id)
-    REFERENCES Mechanic(mechanic_id)
-);
-
 -- Billing Table
 CREATE TABLE Billing(
     bill_id INT AUTO_INCREMENT PRIMARY KEY,
