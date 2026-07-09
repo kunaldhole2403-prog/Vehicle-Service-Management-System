@@ -4,13 +4,10 @@ import mysql.connector
 conn=mysql.connector.connect(
     host=" localhost",
     user="root",
-    password="Priya@123",
-    database="vehicle_service"
+    password="Kunal@123",
+    database="vechicle_service_management"
     )
 print(" database connected !")
-
-
-
 
 # table creation
 cursor=conn.cursor()
@@ -25,5 +22,4 @@ cursor.execute("""
                )
   
 """ )
-
 conn.commit()

@@ -1,4 +1,4 @@
-from db import conn,cursor 
+from customer_module.db import conn,cursor 
 
 # add customer
 def add_customer():
