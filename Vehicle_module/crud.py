@@ -1,4 +1,4 @@
-from db import conn, cursor
+from Vehicle_module.db import conn, cursor
 
 def add():
     customer_id = input("Customer ID : ")

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="Vechical_Service_Database.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="676"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title=".Browsables" custom_title="0" dock_id="1" table="0,10:Browsables"/><dock_state state="000000ff00000000fd00000001000000020000000000000000fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000ffffffff0000011300ffffff000000000000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1*">
+
+-- Login Table
+CREATE TABLE Login(
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    role VARCHAR(20) NOT NULL
+);
+
+-- Customer Table
+CREATE TABLE Customer(
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(50) NOT NULL,
+    phone VARCHAR(15),
+    email VARCHAR(50),
+    address VARCHAR(100)
+);
+
+-- Vehicle Table
+CREATE TABLE Vehicle(
+    vehicle_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT,
+    vehicle_no VARCHAR(20) UNIQUE,
+    company VARCHAR(30),
+    model VARCHAR(30),
+    year INT,
+    FOREIGN KEY(customer_id)
+    REFERENCES Customer(customer_id)
+);
+
+-- Service Table
+CREATE TABLE Service(
+    service_id INT AUTO_INCREMENT PRIMARY KEY,
+    vehicle_id INT,
+    service_type VARCHAR(50),
+    service_date DATE,
+    status VARCHAR(20),
+    FOREIGN KEY(vehicle_id)
+    REFERENCES Vehicle(vehicle_id)
+);
+
+-- Mechanic Table
+CREATE TABLE Mechanic(
+    mechanic_id INT AUTO_INCREMENT PRIMARY KEY,
+    mechanic_name VARCHAR(50),
+    phone VARCHAR(15),
+    specialization VARCHAR(50)
+);
+
+-- Service Assignment Table
+CREATE TABLE Service_Assignment(
+    assign_id INT AUTO_INCREMENT PRIMARY KEY,
+    service_id INT,
+    mechanic_id INT,
+    FOREIGN KEY(service_id)
+    REFERENCES Service(service_id),
+    FOREIGN KEY(mechanic_id)
+    REFERENCES Mechanic(mechanic_id)
+);
+
+-- Billing Table
+CREATE TABLE Billing(
+    bill_id INT AUTO_INCREMENT PRIMARY KEY,
+    service_id INT,
+    amount DECIMAL(10,2),
+    payment_status VARCHAR(20),
+    bill_date DATE,
+    FOREIGN KEY(service_id)
+    REFERENCES Service(service_id)
+);</sql><current_tab id="0"/></tab_sql></sqlb_project>
