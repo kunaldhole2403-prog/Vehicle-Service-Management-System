@@ -1,10 +1,17 @@
 from billing_module.crud import *
+def Billing_module():
+    while True:
+        print("\n BILLING MENU")
+        print("1. Generate Bill")
+        print("2. View Bills")
+        print("3. Search Bill")
+        print("4. Update Payment")
+        print("5. Delete Bill")
+        print("6. Back")
 
-while True:
-    print("\n BILLING MENU \n1. Generate Bill\n2. View Bills\n3. Search Bill\n4. Update Payment\n5. Delete Bill\n6. Exit")
-    def billing_module():
         try:
-            ch = int(input("Enter choice:"))
+            ch = int(input("Enter choice: "))
+
             match ch:
                 case 1:
                     generate_bill()
@@ -17,11 +24,10 @@ while True:
                 case 5:
                     delete_bill()
                 case 6:
+                    print("Returning to Menu...")
                     break
                 case _:
                     print("Invalid Choice")
-        
+
         except Exception as e:
             print("Enter a numerical value:", e)
-
-        

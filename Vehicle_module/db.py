@@ -9,4 +9,3 @@ conn = mysql.connector.connect(
 
 cursor = conn.cursor()
 
-print("Database Connected")

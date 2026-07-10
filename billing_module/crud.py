@@ -1,4 +1,4 @@
-from db import conn, cursor
+from billing_module.db import conn, cursor
 
 GST_RATE = 0.18
 

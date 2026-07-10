@@ -22,8 +22,8 @@ def customer_menue():
             display_all_customer()
 
          elif choice==6:
-            print("Returing to menue press")       
-
+            print("Returing to menue....")  
+            break     
          else:
             print("Invalid choice")
 

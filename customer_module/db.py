@@ -7,10 +7,11 @@ conn=mysql.connector.connect(
     password="Kunal@123",
     database="vechicle_service_management"
     )
-print(" database connected !")
-
 # table creation
 cursor=conn.cursor()
+print("="*60)
+print("Car Wash")
+print("="*60)
 cursor.execute("""
   create table if not exists customer(
                customer_id int auto_increment primary key,
