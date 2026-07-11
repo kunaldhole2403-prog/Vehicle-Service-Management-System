@@ -8,6 +8,9 @@ from billing_module.crud import *
 from billing_module.menu import *
 from billing_module.db import conn, cursor
 from Vehicle_module.db import conn, cursor
+from Service_module.db import *
+from Service_module.curd import *
+from Service_module.service_main import *
 
 while True:
     print("\n===== LOGIN SYSTEM =====")
@@ -39,9 +42,9 @@ while True:
                         case 1:
                             customer_menue() 
                         case 2: 
-                                vehical_module()
+                            vehical_module()
                         case 3:
-                            pass
+                            service_menu()
                         case 4:
                             Billing_module()
                         case 5:
