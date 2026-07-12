@@ -27,17 +27,31 @@ CREATE TABLE Vehicle(
     REFERENCES Customer(customer_id)
 );
 
--- Service Table
-CREATE TABLE Service(
+CREATE TABLE Service_Master (
+    service_master_id INT AUTO_INCREMENT PRIMARY KEY,
+    service_name VARCHAR(50) NOT NULL,
+    price DECIMAL(10,2) NOT NULL
+);
+
+CREATE TABLE Service_Record (
     service_id INT AUTO_INCREMENT PRIMARY KEY,
-    vehicle_id INT,
-    service_type VARCHAR(50),
-    service_date DATE,
-    status VARCHAR(20),
+    vehicle_id INT NOT NULL,
+    service_date DATE NOT NULL,
+    status VARCHAR(20) NOT NULL,
     FOREIGN KEY(vehicle_id)
     REFERENCES Vehicle(vehicle_id)
 );
+CREATE TABLE Service_Details (
+    detail_id INT AUTO_INCREMENT PRIMARY KEY,
+    service_id INT NOT NULL,
+    service_master_id INT NOT NULL,
 
+    FOREIGN KEY(service_id)
+    REFERENCES Service_Record(service_id),
+
+    FOREIGN KEY(service_master_id)
+    REFERENCES Service_Master(service_master_id)
+);
 -- Billing Table
 CREATE TABLE Billing(
     bill_id INT AUTO_INCREMENT PRIMARY KEY,
