@@ -13,52 +13,86 @@ from Service_module.curd import *
 from Service_module.service_main import *
 
 while True:
+
     print("\n===== LOGIN SYSTEM =====")
     print("1. Create New User")
     print("2. Login")
     print("3. Forget Password")
     print("4. Exit")
 
+    choice = input("Enter Choice: ")
 
-    choice = int(input("Enter Choice: "))
-
-    if choice == 1:
+    if choice == "1":
         create_user()
 
-    elif choice == 2:
-        if login(): 
+    elif choice == "2":
+
+        user = login()
+
+        if user:
 
             while True:
-                print("Welcome to Vehicle Service Management System")
-                print("="*60)
-                print("1. Customer Menue: ")
-                print("2. Vehical Menue: ")
-                print("3. Service Menue: ")
-                print("4. Billing Menue: ")
-                print("5. Logout: ")
-                try:
-                    choice_menue = int(input("Enter the Menue: "))
-                    match choice_menue:
-                        case 1:
-                            customer_menue() 
-                        case 2: 
-                            vehical_module()
-                        case 3:
+
+                print("\n===== ACCOUNT MENU =====")
+                print("1. Change Password")
+                print("2. Delete Account")
+                print("3. Vehicle Service Management System")
+                print("4. Logout")
+
+                ch = input("Enter Choice: ")
+
+                if ch == "1":
+                    change_password(user)
+
+                elif ch == "2":
+
+                    if delete_account(user):
+                        break
+
+                elif ch == "3":
+
+                    while True:
+
+                        print("\n===== VEHICLE SERVICE MANAGEMENT =====")
+                        print("1. Customer Module")
+                        print("2. Vehicle Module")
+                        print("3. Service Module")
+                        print("4. Billing Module")
+                        print("5. Back")
+
+                        op = input("Enter Choice: ")
+
+                        if op == "1":
+                            customer_menue()
+
+                        elif op == "2":
+                            vehicle_menu()
+
+                        elif op == "3":
                             service_menu()
-                        case 4:
-                            Billing_module()
-                        case 5:
-                            print("Logged Out Successfully...")
+
+                        elif op == "4":
+                            billing_menu()
+
+                        elif op == "5":
                             break
-                        case _:
-                            print("Invalid Choice!!")
-                except Exception as e:
-                    print(e)                
-    elif choice == 3:
+
+                        else:
+                            print("Invalid Choice")
+
+                elif ch == "4":
+                    print("Logged Out Successfully")
+                    break
+
+                else:
+                    print("Invalid Choice")
+
+    elif choice == "3":
         forget_pass()
 
-    elif choice == 4:
-        print("Have a Nice Day")
+    elif choice == "4":
+        print("Thank You")
         break
+
     else:
         print("Invalid Choice")
